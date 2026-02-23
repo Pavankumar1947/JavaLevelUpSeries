@@ -1,0 +1,26 @@
+package com.eclothing.clothing.programming;
+
+import java.util.Scanner;
+
+public class ConvertIntegerToRomen {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the number : ");
+        int number = sc.nextInt();
+        System.out.println("Roman : " + intToRoman(number));
+    }
+
+    public static String intToRoman(int number) {
+        int[] values = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+        String[] romans = {"M","CM","D","CD","C","XC","L","XL","X","IX","V","IV","I"};
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < values.length; i++) {
+            while (number >= values[i]) {
+                number -= values[i];
+                sb.append(romans[i]);
+            }
+        }
+        return sb.toString();
+    }
+}
